@@ -36,7 +36,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
