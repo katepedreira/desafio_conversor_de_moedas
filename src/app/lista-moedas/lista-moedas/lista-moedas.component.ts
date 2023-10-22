@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PrincipalService } from 'src/app/principal/principal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { IListaMoedas } from 'src/app/model/IListaMoedas';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTable} from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-lista-moedas',
@@ -10,21 +14,33 @@ import { IListaMoedas } from 'src/app/model/IListaMoedas';
 })
 
 export class ListaMoedasComponent implements OnInit {
-  displayedColumns: string[] = ['symbol', 'name'];
-  dataSource: MatTableDataSource<IListaMoedas>;
+  displayedColumns: string[] = ['symbol', 'price'];
+  dataSource: MatTableDataSource<IListaMoedas> = new MatTableDataSource<IListaMoedas>([]);
+  pageSize: number = 10;
+
+  @ViewChild('input', { static: true }) input: HTMLInputElement | undefined;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
 
   constructor(private principalService: PrincipalService) {
     this.dataSource = new MatTableDataSource<IListaMoedas>([]);
   }
 
   ngOnInit() {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
+    }
+
     this.principalService.getSupportedCurrencies().subscribe(
       (response) => {
         if (response.result === 'success' && response.conversion_rates) {
           const currenciesArray = Object.keys(response.conversion_rates).map((symbol) => {
             return {
               symbol: symbol,
-              name: response.conversion_rates[symbol]
+              price: response.conversion_rates[symbol]
             };
           });
           this.dataSource.data = currenciesArray;
@@ -40,8 +56,6 @@ export class ListaMoedasComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
 }
 
 

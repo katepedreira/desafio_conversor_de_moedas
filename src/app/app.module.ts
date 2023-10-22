@@ -14,6 +14,8 @@ import { ConversorMoedasComponent } from './conversor-moedas/conversor-moedas/co
 import { HistoricoConversoesComponent } from './historico-conversoes/historico-conversoes/historico-conversoes.component';
 import { ListaMoedasComponent } from './lista-moedas/lista-moedas/lista-moedas.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -37,6 +39,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    MatSelectModule,
 
   ],
   providers: [],
