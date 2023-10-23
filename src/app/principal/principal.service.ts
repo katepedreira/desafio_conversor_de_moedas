@@ -15,25 +15,31 @@ export class PrincipalService {
     return this.http.get(`${this.apiUrl}${this.key}/latest/BRL`);
   }
 
-  getExchangeRates(): Observable<any> {
-    const params = new HttpParams()
-      .set('base', 'USD');
-
-    return this.http.get(`${this.apiUrl}${this.key}/latest`, { params });
+  getCurrenciesNames(): Observable<any> {
+    return this.http.get(`${this.apiUrl}${this.key}/codes`);
   }
 
-  converterCurrency(valor: number, moedaOrigem: string, moedaDestino: string): Observable<any> {
-    const params = new HttpParams()
-      .set('from', moedaOrigem)
-      .set('to', moedaDestino)
-      .set('amount', valor.toString());
+  converterMoeda(valor: number, moedaOrigem: string, moedaDestino: string): Observable<any> {
+    const params = {
+      from: moedaOrigem,
+      to: moedaDestino,
+      amount: valor.toString()
+    };
 
     return this.http.get(`${this.apiUrl}convert`, { params });
   }
 
-  testApiRequest(): Observable<any> {
-    return this.http.get(`${this.apiUrl}list`, {
-      params: new HttpParams().set('access_key', this.key)
-    });
+  getListaDeMoedas(): Observable<any> {
+    return this.http.get(`${this.apiUrl}${this.key}/currencies`);
   }
-}
+
+  getExchangeRate(base: string, target: string, amount?: number): Observable<any> {
+    let url = `${this.apiUrl}${this.key}/pair/${base}/${target}`;
+    if (amount) {
+      url += `/${amount}`;
+    }
+    return this.http.get(url);
+  }
+
+  }
+

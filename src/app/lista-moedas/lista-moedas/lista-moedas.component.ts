@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PrincipalService } from 'src/app/principal/principal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { IListaMoedas } from 'src/app/model/IListaMoedas';
+import { IListCurrencies } from 'src/app/model/IListCurrencies';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -14,8 +15,8 @@ import { MatSort } from '@angular/material/sort';
 })
 
 export class ListaMoedasComponent implements OnInit {
-  displayedColumns: string[] = ['symbol', 'price'];
-  dataSource: MatTableDataSource<IListaMoedas> = new MatTableDataSource<IListaMoedas>([]);
+  displayedColumns: string[] = ['symbol','name'];
+  dataSource: MatTableDataSource<IListCurrencies> = new MatTableDataSource<IListCurrencies>([]);
   pageSize: number = 10;
 
   @ViewChild('input', { static: true }) input: HTMLInputElement | undefined;
@@ -23,7 +24,7 @@ export class ListaMoedasComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
 
   constructor(private principalService: PrincipalService) {
-    this.dataSource = new MatTableDataSource<IListaMoedas>([]);
+    this.dataSource = new MatTableDataSource<IListCurrencies>([]);
   }
 
   ngOnInit() {
@@ -34,13 +35,13 @@ export class ListaMoedasComponent implements OnInit {
       this.dataSource.sort = this.sort;
     }
 
-    this.principalService.getSupportedCurrencies().subscribe(
+    this.principalService.getCurrenciesNames().subscribe(
       (response) => {
-        if (response.result === 'success' && response.conversion_rates) {
-          const currenciesArray = Object.keys(response.conversion_rates).map((symbol) => {
+        if (response.result === 'success' && response.supported_codes) {
+          const currenciesArray: IListCurrencies[] = response.supported_codes.map((currency: any) => {
             return {
-              symbol: symbol,
-              price: response.conversion_rates[symbol]
+              symbol: currency[0],
+              name: currency[1]
             };
           });
           this.dataSource.data = currenciesArray;

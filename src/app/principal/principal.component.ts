@@ -19,10 +19,6 @@ export class PrincipalComponent {
 
   constructor(private principalService: PrincipalService) {}
 
-  testarApi() {
-    this.principalService.testApiRequest().subscribe((response) => {
-      this.apiResponse = response;
-    });
-  }
+
 
 }
