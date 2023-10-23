@@ -7,7 +7,7 @@ import { PrincipalService } from 'src/app/principal/principal.service';
   styleUrls: ['./conversor-moedas.component.css']
 })
 export class ConversorMoedasComponent {
-  moedas: string[] = [];
+  moedas: any[] = []; // Deve ser um array de objetos com propriedades 'name' e 'symbol'
   moedaOrigem: string = '';
   moedaDestino: string = '';
   valor: number = 0;
@@ -38,7 +38,12 @@ export class ConversorMoedasComponent {
     this.principalService.getCurrenciesNames().subscribe(
       (response: any) => {
         if (response.result === 'success' && response.supported_codes) {
-          this.moedas = response.supported_codes.map((currency: any) => currency[0]);
+          this.moedas = response.supported_codes.map((currency: any) => {
+            return {
+              name: currency[1],
+              symbol: currency[0]
+            };
+          });
         }
       },
       (error: any) => {
@@ -47,3 +52,4 @@ export class ConversorMoedasComponent {
     );
   }
 }
+
