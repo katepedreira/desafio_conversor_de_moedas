@@ -24,5 +24,10 @@
   <p>Taxa de Conversão: {{ taxaDeConversao }}</p>
 </div>
 
+<div *ngIf="valorConvertido && taxaDeConversao">
+  <p>{{ valor }} em {{ moedaOrigem }} equivale a {{ valorConvertido }} {{ moedaDestino }}</p>
+  <p>Taxa de conversão utilizada: {{ taxaDeConversao }}</p>
+</div>
+
 
 
