@@ -28,7 +28,17 @@ export class HistoricoConversoesService {
     const index = this.historico.indexOf(conversao);
     if (index !== -1) {
       this.historico.splice(index, 1);
+      this.atualizarLocalStorage();
     }
+  }
+
+  private atualizarLocalStorage() {
+    localStorage.setItem('historico', JSON.stringify(this.historico));
+  }
+
+  private obterHistoricoLocalStorage(): IHistoricoConversoes[] {
+    const historicoData = JSON.parse(localStorage.getItem('historico') || '[]');
+    return historicoData;
   }
 
   obterConversaoPorId(id: string): IHistoricoConversoes | undefined {

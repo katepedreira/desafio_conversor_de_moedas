@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PrincipalService } from 'src/app/principal/principal.service';
+import { HistoricoConversoesService } from 'src/app/historico-conversoes/historico-conversoes.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-conversor-moedas',
@@ -7,14 +9,18 @@ import { PrincipalService } from 'src/app/principal/principal.service';
   styleUrls: ['./conversor-moedas.component.css']
 })
 export class ConversorMoedasComponent {
-  moedas: any[] = []; // Deve ser um array de objetos com propriedades 'name' e 'symbol'
+  moedas: any[] = [];
   moedaOrigem: string = '';
   moedaDestino: string = '';
   valor: number = 0;
   valorConvertido: number = 0;
   taxaDeConversao: number = 0;
 
-  constructor(private principalService: PrincipalService) {}
+  constructor(
+    private principalService: PrincipalService,
+    private historicoService: HistoricoConversoesService
+  ) {}
+
 
   converterMoeda() {
     if (this.moedaOrigem && this.moedaDestino && this.valor) {
@@ -23,6 +29,23 @@ export class ConversorMoedasComponent {
           if (response.result === 'success' && response.conversion_rate) {
             this.valorConvertido = response.conversion_result;
             this.taxaDeConversao = response.conversion_rate;
+
+            const id = uuidv4();
+
+            const conversao = {
+              id: id,
+              data: new Date(),
+              hora: new Date(),
+              moedaOrigem: this.moedaOrigem,
+              valorOrigem: this.valor,
+              moedaDestino: this.moedaDestino,
+              valorDestino: this.valorConvertido,
+              taxaCambio: this.taxaDeConversao
+            };
+
+            this.historicoService.adicionarConversao(conversao);
+            const conversaoString = JSON.stringify(conversao);
+            localStorage.setItem('conversao-1', conversaoString);
           }
         },
         (error: any) => {

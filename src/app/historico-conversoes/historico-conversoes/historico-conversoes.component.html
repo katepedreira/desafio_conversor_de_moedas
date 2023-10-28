@@ -3,12 +3,12 @@
   <mat-table [dataSource]="historico" class="mat-elevation-z8">
     <ng-container matColumnDef="data">
       <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.data }} </mat-cell>
+      <mat-cell *matCellDef="let conversao"> {{ conversao.data | date: 'dd-MM-yyyy'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="hora">
       <mat-header-cell *matHeaderCellDef> Hora </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.hora }} </mat-cell>
+      <mat-cell *matCellDef="let conversao"> {{ conversao.hora | date: 'HH:mm:ss'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="moedaOrigem">

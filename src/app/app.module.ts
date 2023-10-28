@@ -16,6 +16,10 @@ import { ListaMoedasComponent } from './lista-moedas/lista-moedas/lista-moedas.c
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { HistoricoConversoesService } from './historico-conversoes/historico-conversoes.service';
+import { DatePipe } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -28,6 +32,9 @@ import { FormsModule } from '@angular/forms';
     HistoricoConversoesComponent,
     ListaMoedasComponent,
     NavbarComponent,
+    HistoricoConversoesComponent,
+    HomeComponent,
+
 
   ],
   imports: [
@@ -44,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [HistoricoConversoesService,
+              DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

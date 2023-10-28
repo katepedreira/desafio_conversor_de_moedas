@@ -5,9 +5,11 @@ import { ConversorMoedasComponent } from './conversor-moedas/conversor-moedas/co
 import { HistoricoConversoesComponent } from './historico-conversoes/historico-conversoes/historico-conversoes.component';
 import { ListaMoedasComponent } from './lista-moedas/lista-moedas/lista-moedas.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: 'principal', pathMatch: 'full'},
+  {path: "", redirectTo: 'home', pathMatch: 'full'},
+  {path: "home", component: HomeComponent},
   {path: "principal", component: PrincipalComponent},
   {path: "conversor-moedas", component: ConversorMoedasComponent},
   {path: "historico-conversoes", component: HistoricoConversoesComponent},

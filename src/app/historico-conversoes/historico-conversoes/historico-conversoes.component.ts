@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IHistoricoConversoes } from 'src/app/model/IHistoricoConversoes';
 import { MatTableDataSource } from '@angular/material/table';
 import { HistoricoConversoesService } from '../historico-conversoes.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -27,7 +28,9 @@ export class HistoricoConversoesComponent implements OnInit {
 
   excluirConversao(conversao: IHistoricoConversoes) {
     this.historicoService.excluirConversao(conversao);
+    this.historico = new MatTableDataSource<IHistoricoConversoes>(this.historicoService.obterHistoricoCompleto());
   }
+
 }
 
 
