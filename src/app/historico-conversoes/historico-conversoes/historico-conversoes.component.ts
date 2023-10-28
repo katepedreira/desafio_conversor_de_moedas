@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoricoConversoesService } from '../historico-conversoes.service';
 import { IHistoricoConversoes } from 'src/app/model/IHistoricoConversoes';
 import { MatTableDataSource } from '@angular/material/table';
+import { HistoricoConversoesService } from '../historico-conversoes.service';
+
 
 @Component({
   selector: 'app-historico-conversoes',
@@ -15,15 +16,17 @@ export class HistoricoConversoesComponent implements OnInit {
 
 
 
-  constructor(private historicoService: HistoricoConversoesService) {}
+  constructor(private historicoService: HistoricoConversoesService) {
+    this.historico = new MatTableDataSource<IHistoricoConversoes>([]);
+  }
 
   ngOnInit(): void {
-    this.historico = new MatTableDataSource<IHistoricoConversoes>(this.historicoService.obterHistoricoCompleto());
+    const historicoData = JSON.parse(localStorage.getItem('historico') || '[]');
+    this.historico.data = historicoData;
   }
 
   excluirConversao(conversao: IHistoricoConversoes) {
     this.historicoService.excluirConversao(conversao);
-    this.historico.data = this.historicoService.obterHistoricoCompleto();
   }
 }
 
