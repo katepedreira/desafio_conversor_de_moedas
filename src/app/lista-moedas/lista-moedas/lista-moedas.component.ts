@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { PrincipalService } from 'src/app/principal/principal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { IListaMoedas } from 'src/app/model/IListaMoedas';
@@ -15,6 +15,8 @@ import { MatSort } from '@angular/material/sort';
 })
 
 export class ListaMoedasComponent implements OnInit {
+  @Output() tableHeightChanged = new EventEmitter<number>();
+
   displayedColumns: string[] = ['symbol','name'];
   dataSource: MatTableDataSource<IListCurrencies> = new MatTableDataSource<IListCurrencies>([]);
   pageSize: number = 10;
@@ -25,6 +27,10 @@ export class ListaMoedasComponent implements OnInit {
 
   constructor(private principalService: PrincipalService) {
     this.dataSource = new MatTableDataSource<IListCurrencies>([]);
+  }
+
+  onTableHeightChanged(height: number) {
+    this.tableHeightChanged.emit(height);
   }
 
   ngOnInit() {

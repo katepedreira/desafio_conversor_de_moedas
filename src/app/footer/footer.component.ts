@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  footerMarginTop: number = 0;
+
+  onTableHeightChanged(height: number) {
+    this.footerMarginTop = height;
+  }
+
 }
