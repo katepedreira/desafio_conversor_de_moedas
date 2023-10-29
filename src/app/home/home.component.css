@@ -15,7 +15,7 @@ body {
   color: #fff;
   display: flex;
   max-width: 800px;
-  margin-bottom: 15%;
+  margin-bottom: 12%;
 }
 
 .content {
@@ -29,6 +29,7 @@ body {
   flex: 1;
   padding: 20px;
   text-align: left;
+  padding-top: 70px;
 }
 
 .right {
@@ -38,8 +39,12 @@ body {
   align-items: center;
 }
 
+.title {
+  margin-bottom: 50px;
+}
+
 h1 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 p {
