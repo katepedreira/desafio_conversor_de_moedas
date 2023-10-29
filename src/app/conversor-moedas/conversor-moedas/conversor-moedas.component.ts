@@ -10,11 +10,13 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class ConversorMoedasComponent {
   moedas: any[] = [];
-  moedaOrigem: string = '';
+  moedaOrigem: string = 'selecione';
   moedaDestino: string = '';
   valor: number = 0;
   valorConvertido: number = 0;
   taxaDeConversao: number = 0;
+  mostrarResultado: boolean = false;
+
 
   constructor(
     private principalService: PrincipalService,
@@ -23,15 +25,15 @@ export class ConversorMoedasComponent {
 
 
   converterMoeda() {
-    if (this.moedaOrigem && this.moedaDestino && this.valor) {
+    if (this.moedaOrigem && this.moedaOrigem !== 'selecione' && this.moedaDestino && this.valor) {
       this.principalService.getExchangeRate(this.moedaOrigem, this.moedaDestino, this.valor).subscribe(
         (response: any) => {
           if (response.result === 'success' && response.conversion_rate) {
             this.valorConvertido = response.conversion_result;
             this.taxaDeConversao = response.conversion_rate;
+            this.mostrarResultado = true;
 
             const id = uuidv4();
-
             const conversao = {
               id: id,
               data: new Date(),
@@ -42,10 +44,10 @@ export class ConversorMoedasComponent {
               valorDestino: this.valorConvertido,
               taxaCambio: this.taxaDeConversao
             };
-
             this.historicoService.adicionarConversao(conversao);
             const conversaoString = JSON.stringify(conversao);
             localStorage.setItem('conversao-1', conversaoString);
+
           }
         },
         (error: any) => {
@@ -74,5 +76,14 @@ export class ConversorMoedasComponent {
       }
     );
   }
-}
 
+  realizarNovaConversao() {
+    this.mostrarResultado = false;
+    this.moedaOrigem = 'selecione';
+    this.moedaDestino = '';
+    this.valor = 0;
+    this.valorConvertido = 0;
+    this.taxaDeConversao = 0;
+  }
+
+}

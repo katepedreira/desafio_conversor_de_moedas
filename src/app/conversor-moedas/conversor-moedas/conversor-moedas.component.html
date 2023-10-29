@@ -1,6 +1,5 @@
 <body>
-
-  <div class="form-container">
+  <div *ngIf="!mostrarResultado" class="form-container">
     <mat-form-field class="form-field">
       <mat-label>Source Currency</mat-label>
       <mat-select [(ngModel)]="moedaOrigem">
@@ -21,13 +20,19 @@
     </mat-form-field>
 
     <button (click)="converterMoeda()" class="convert-button">Convert</button>
-
   </div>
 
-  <div *ngIf="valorConvertido && taxaDeConversao" class="conversion-result">
+  <div *ngIf="mostrarResultado" class="conversion-result">
     <p class="conversion-text">{{ valor }} in {{ moedaOrigem }} is equivalent to {{ valorConvertido }} {{ moedaDestino }}</p>
     <p class="conversion-rate">Conversion rate used: {{ taxaDeConversao }}</p>
+    <div>
+      <button (click)="realizarNovaConversao()" class="convert-button">Start a new conversion</button>
+    </div>
   </div>
-
-
 </body>
+
+
+
+
+
+

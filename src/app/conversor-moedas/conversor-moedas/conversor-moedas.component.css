@@ -52,15 +52,15 @@ mat-form-field {
 
 
 .conversion-result {
-  background-color: #fff;
-  color: #00098b;
+  background: linear-gradient(135deg, #00098b, #4175c4);
+  color: aliceblue;
   border: 2px solid rgb(17, 66, 213);
   border-radius: 5px;
   padding: 10px;
   text-align: center;
-  margin: 10px auto;
-  max-width: 500px;
-  margin-bottom: 5%;
+  margin: 100px auto;
+  max-width: 450px;
+  margin-bottom: 10%;
 }
 
 

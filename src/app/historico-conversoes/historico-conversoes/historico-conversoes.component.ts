@@ -34,8 +34,8 @@ export class HistoricoConversoesComponent implements OnInit {
 
   ngOnInit(): void {
     const historicoData = JSON.parse(localStorage.getItem('historico') || '[]');
+    historicoData.reverse();
     this.historico.data = historicoData;
-
     this.historico.sort = this.sort;
     this.historico.paginator = this.paginator;
   }
