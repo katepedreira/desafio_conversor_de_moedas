@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { HistoricoConversoesService } from './historico-conversoes/historico-conversoes.service';
 import { DatePipe } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -34,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     HistoricoConversoesComponent,
     HomeComponent,
+    FooterComponent,
 
 
   ],

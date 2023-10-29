@@ -4,8 +4,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { ConversorMoedasComponent } from './conversor-moedas/conversor-moedas/conversor-moedas.component';
 import { HistoricoConversoesComponent } from './historico-conversoes/historico-conversoes/historico-conversoes.component';
 import { ListaMoedasComponent } from './lista-moedas/lista-moedas/lista-moedas.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+
 
 const routes: Routes = [
   {path: "", redirectTo: 'home', pathMatch: 'full'},
@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: "conversor-moedas", component: ConversorMoedasComponent},
   {path: "historico-conversoes", component: HistoricoConversoesComponent},
   {path: "lista-moedas", component: ListaMoedasComponent},
-  {path: "navbar", component: NavbarComponent},
+
+
 ];
 
 @NgModule({
