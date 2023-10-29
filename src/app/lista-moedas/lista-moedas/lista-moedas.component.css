@@ -1,0 +1,29 @@
+
+.custom-table-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+
+.custom-table {
+  width: 100%;
+  border: 2px solid rgb(17, 66, 213);
+}
+
+
+.search {
+  margin-left: 10.1%;
+  padding-top: 1.5%;
+}
+
+mat-form-field {
+  width: 30%;
+}
+
+body {
+
+  background: linear-gradient(135deg, #00098b, #4175c4);
+
+}
+
+

@@ -1,50 +1,54 @@
-<div>
-  <h2>Histórico de Conversões</h2>
-  <mat-table [dataSource]="historico" class="mat-elevation-z8">
-    <ng-container matColumnDef="data">
-      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.data | date: 'dd-MM-yyyy'}} </mat-cell>
-    </ng-container>
+<body>
 
-    <ng-container matColumnDef="hora">
-      <mat-header-cell *matHeaderCellDef> Hora </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.hora | date: 'HH:mm:ss'}} </mat-cell>
-    </ng-container>
+  <div>
+    <h2>Histórico de Conversões</h2>
+    <mat-table [dataSource]="historico" class="custom-table">
+      <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.data | date: 'dd-MM-yyyy'}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="moedaOrigem">
-      <mat-header-cell *matHeaderCellDef> Moeda Origem </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.moedaOrigem }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="hora">
+        <mat-header-cell *matHeaderCellDef> Hora </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.hora | date: 'HH:mm:ss'}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="valorOrigem">
-      <mat-header-cell *matHeaderCellDef> Valor Origem </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.valorOrigem }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="moedaOrigem">
+        <mat-header-cell *matHeaderCellDef> Moeda Origem </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.moedaOrigem }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="moedaDestino">
-      <mat-header-cell *matHeaderCellDef> Moeda Destino </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.moedaDestino }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="valorOrigem">
+        <mat-header-cell *matHeaderCellDef> Valor Origem </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.valorOrigem }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="valorDestino">
-      <mat-header-cell *matHeaderCellDef> Valor Destino </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.valorDestino }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="moedaDestino">
+        <mat-header-cell *matHeaderCellDef> Moeda Destino </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.moedaDestino }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="taxaCambio">
-      <mat-header-cell *matHeaderCellDef> Taxa de Câmbio </mat-header-cell>
-      <mat-cell *matCellDef="let conversao"> {{ conversao.taxaCambio }} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="valorDestino">
+        <mat-header-cell *matHeaderCellDef> Valor Destino </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.valorDestino }} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="acoes">
-      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-      <mat-cell *matCellDef="let conversao">
-        <button (click)="excluirConversao(conversao)">Excluir</button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="taxaCambio">
+        <mat-header-cell *matHeaderCellDef> Taxa de Câmbio </mat-header-cell>
+        <mat-cell *matCellDef="let conversao"> {{ conversao.taxaCambio }} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
-</div>
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let conversao">
+          <button (click)="excluirConversao(conversao)">Excluir</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+
+</body>
 

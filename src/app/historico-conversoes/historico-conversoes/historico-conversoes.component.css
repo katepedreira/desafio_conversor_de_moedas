@@ -1,0 +1,61 @@
+/* Estilo para o container da tabela */
+.custom-table-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Estilo para a tabela */
+.custom-table {
+  width: 80%;
+  max-width: 80%;
+  border: 2px solid rgb(17, 66, 213);
+  border-radius: 5px;
+}
+
+/* Estilo para as células da tabela */
+mat-cell {
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  color: #00098b;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Estilo para os cabeçalhos da tabela */
+mat-header-cell {
+  background-color: #00098b;
+  color: #2611e3;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Estilo para os botões Excluir na tabela */
+button {
+  background-color: #3f6be7; /* Cor de fundo do botão (vermelho) */
+  color: #fff; /* Cor do texto (branco) */
+  border: none; /* Remova a borda */
+  border-radius: 5px; /* Adicione bordas arredondadas */
+  padding: 10px 20px; /* Ajuste o preenchimento conforme necessário */
+  cursor: pointer; /* Altere o cursor ao passar o mouse sobre o botão */
+  transition: background-color 0.3s; /* Adicione uma transição suave na mudança de cor de fundo */
+}
+
+button:hover {
+  background-color: #0d1193; /* Cor de fundo ao passar o mouse (tom mais escuro) */
+}
+
+/* Estilo para o cabeçalho */
+h2 {
+  background-color: #00098b;
+  color: #fff;
+  padding: 10px;
+}
+
+body {
+
+  background: linear-gradient(135deg, #00098b, #4175c4);
+
+}
+
