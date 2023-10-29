@@ -1,65 +1,41 @@
-
-.custom-table-container {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.custom-table {
-  width: 100%;
-  border: 2px solid rgb(17, 66, 213);
-  border-radius: 5px;
-}
-
-.search {
-  margin-left: 10.1%;
-  padding-top: 1.5%;
-}
-
-body {
-  background: linear-gradient(135deg, #00098b, #4175c4);
+/* Estilos para cobrir a altura da tela */
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+  overflow: hidden; /* Impede a rolagem vertical */
+  background: linear-gradient(135deg, #00098b, #4175c4);
+}
+
+/* Crie um contêiner principal que cobrirá a altura da tela */
+.container {
+  min-height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  margin-bottom: 60%;
 }
 
-td {
-  padding: 10px;
-  text-align: center;
-  background-color: #fff;
-  color: #00098b;
-}
-
-
-th {
-  background-color: #00098b;
-  color: #fff;
-  padding: 10px;
-}
-
-
+/* Estilos para o conteúdo da sua página */
 .form-container {
+  flex-grow: 1; /* Isso fará com que o conteúdo principal ocupe o espaço restante na tela */
+  padding: 20px;
+  background: linear-gradient(135deg, #00098b, #4175c4);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 36%;
-  width: 40%;
-  background: linear-gradient(135deg, #00098b, #4175c4);
-  margin: 0;
-  flex-direction: column;
   max-width: 600px;
+  margin: 0 auto;
+  flex-direction: column;
   padding: 20px;
-  margin-bottom: 4%;
+  margin-top: 100px;
 }
 
-
+/* Outros estilos para os campos do formulário e botão Convert */
 mat-form-field {
   width: 100%;
   max-width: 100%;
   margin-bottom: 10px;
 }
-
 
 .convert-button {
   width: 100%;
@@ -74,10 +50,7 @@ mat-form-field {
   transition: background-color 0.3s;
 }
 
-.convert-button:hover {
-  background-color: #0056b3;
-}
-
+/* Estilos para o resultado de conversão */
 .conversion-result {
   background-color: #fff;
   color: #00098b;
@@ -86,18 +59,11 @@ mat-form-field {
   padding: 10px;
   text-align: center;
   margin: 10px auto;
-  max-width: 80%;
+  max-width: 500px;
   margin-bottom: 5%;
 }
 
-.conversion-text {
-  font-size: 18px;
-  margin: 10px 0;
-}
 
-.conversion-rate {
-  font-size: 14px;
-}
 
 
 

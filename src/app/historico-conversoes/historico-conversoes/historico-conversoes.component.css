@@ -2,16 +2,15 @@
 .custom-table-container {
   max-width: 80%;
   max-height: 60%;
-  overflow-y: auto;
   margin: 0 auto;
   position: relative;
   height: 730px;
 }
 
-.custom-table {
+.table {
   width: 80%;
   max-width: 80%;
-  border: 2px solid rgb(17, 66, 213);
+  max-height: 103%;
   border-radius: 5px;
   position: relative;
   overflow-y: auto;
@@ -69,9 +68,6 @@ body {
 
 }
 
-html, body {
-  height: 100%;
-}
 
 .search {
   margin-left: 10.1%;

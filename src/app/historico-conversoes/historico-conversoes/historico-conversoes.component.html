@@ -1,5 +1,5 @@
-<body>
-  <div>
+
+  <body>
     <h2 class="page-title">Conversion History</h2>
 
     <mat-form-field class="search">
@@ -8,7 +8,7 @@
 
 
     <div class="custom-table-container">
-      <mat-table [dataSource]="historico" matSort class="custom-table">
+      <mat-table [dataSource]="historico" matSort class="table">
         <ng-container matColumnDef="data">
           <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
           <mat-cell *matCellDef="let conversao"> {{ conversao.data | date: 'dd-MM-yyyy' }} </mat-cell>
@@ -56,8 +56,8 @@
       </mat-table>
     </div>
 
-  </div>
-</body>
+  </body>
+
 
 
 
