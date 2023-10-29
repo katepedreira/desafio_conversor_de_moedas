@@ -1,13 +1,13 @@
-/* Estilos para cobrir a altura da tela */
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Impede a rolagem vertical */
+  overflow: hidden;
   background: linear-gradient(135deg, #00098b, #4175c4);
 }
 
-/* Crie um contêiner principal que cobrirá a altura da tela */
+
 .container {
   min-height: 100%;
   display: flex;
@@ -15,9 +15,9 @@ html, body {
   margin-bottom: 60%;
 }
 
-/* Estilos para o conteúdo da sua página */
+
 .form-container {
-  flex-grow: 1; /* Isso fará com que o conteúdo principal ocupe o espaço restante na tela */
+  flex-grow: 1;
   padding: 20px;
   background: linear-gradient(135deg, #00098b, #4175c4);
   display: flex;
@@ -30,7 +30,7 @@ html, body {
   margin-top: 100px;
 }
 
-/* Outros estilos para os campos do formulário e botão Convert */
+
 mat-form-field {
   width: 100%;
   max-width: 100%;
@@ -50,7 +50,7 @@ mat-form-field {
   transition: background-color 0.3s;
 }
 
-/* Estilos para o resultado de conversão */
+
 .conversion-result {
   background-color: #fff;
   color: #00098b;

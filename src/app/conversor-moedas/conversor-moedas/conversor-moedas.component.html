@@ -31,33 +31,3 @@
 
 
 </body>
-<!--
-<body>
-  <form class="form-container" (submit)="converterMoeda()">
-    <mat-form-field class="form-field">
-      <mat-label>Source Currency</mat-label>
-      <mat-select [(ngModel)]="moedaOrigem">
-        <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <mat-label>Target Currency</mat-label>
-      <mat-select [(ngModel)]="moedaDestino">
-        <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <mat-label>Value to be converted</mat-label>
-      <input matInput [(ngModel)]="valor" type="number">
-    </mat-form-field>
-
-    <button type="submit" class="convert-button">Convert</button>
-  </form>
-
-  <div *ngIf="valorConvertido && taxaDeConversao" class="conversion-result">
-    <p class="conversion-text">{{ valor }} in {{ moedaOrigem }} is equivalent to {{ valorConvertido }} {{ moedaDestino }}</p>
-    <p class="conversion-rate">Conversion rate used: {{ taxaDeConversao }}</p>
-  </div>
-</body> -->
