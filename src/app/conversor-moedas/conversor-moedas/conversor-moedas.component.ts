@@ -28,11 +28,11 @@ export class ConversorMoedasComponent {
 
   converterMoeda() {
     if (!this.moedaOrigem || this.moedaOrigem === 'selecione') {
-      this.exibirAlertaErro('Selecione uma moeda de origem.');
+      this.exibirAlertaErro('Selecione uma moeda de origem!');
     } else if (!this.moedaDestino) {
-      this.exibirAlertaErro('Selecione uma moeda de destino.');
+      this.exibirAlertaErro('Selecione uma moeda de destino!');
     } else if (this.valor <= 0) {
-      this.exibirAlertaErro('O valor de conversão deve ser maior que 0.');
+      this.exibirAlertaErro('O valor de conversão deve ser maior que zero!');
     } else {
       this.principalService.getExchangeRate(this.moedaOrigem, this.moedaDestino, this.valor).subscribe(
         (response: any) => {
