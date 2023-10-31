@@ -28,11 +28,11 @@ export class ConversorMoedasComponent {
 
   converterMoeda() {
     if (!this.moedaOrigem || this.moedaOrigem === 'selecione') {
-      this.exibirAlertaErro('Selecione uma moeda de origem!');
+      this.exibirAlertaErro('Select a source currency!');
     } else if (!this.moedaDestino) {
-      this.exibirAlertaErro('Selecione uma moeda de destino!');
+      this.exibirAlertaErro('Select a target currency!');
     } else if (this.valor <= 0) {
-      this.exibirAlertaErro('O valor de conversão deve ser maior que zero!');
+      this.exibirAlertaErro('The conversion value must be greater than zero!');
     } else {
       this.principalService.getExchangeRate(this.moedaOrigem, this.moedaDestino, this.valor).subscribe(
         (response: any) => {
@@ -68,7 +68,7 @@ export class ConversorMoedasComponent {
   }
 
   exibirAlertaErro(mensagem: string) {
-    this.snackBar.open(mensagem, 'Fechar', {
+    this.snackBar.open(mensagem, 'Close', {
       duration: 5000,
     });
   }
