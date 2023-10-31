@@ -40,8 +40,8 @@ export class HistoricoConversoesComponent implements OnInit {
     this.historico.paginator = this.paginator;
   }
 
-  excluirConversao(conversao: IHistoricoConversoes) {
-    this.historicoService.excluirConversao(conversao);
+  excluirConversao(id: string) {
+    this.historicoService.excluirConversao(id);
     this.historico = new MatTableDataSource<IHistoricoConversoes>(this.historicoService.obterHistoricoCompleto());
     this.historico.sort = this.sort;
   }

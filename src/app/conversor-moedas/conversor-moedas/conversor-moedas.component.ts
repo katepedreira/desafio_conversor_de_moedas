@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PrincipalService } from 'src/app/principal/principal.service';
 import { HistoricoConversoesService } from 'src/app/historico-conversoes/historico-conversoes.service';
 import { v4 as uuidv4 } from 'uuid';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-conversor-moedas',
@@ -20,12 +21,19 @@ export class ConversorMoedasComponent {
 
   constructor(
     private principalService: PrincipalService,
-    private historicoService: HistoricoConversoesService
+    private historicoService: HistoricoConversoesService,
+    private snackBar: MatSnackBar
   ) {}
 
 
   converterMoeda() {
-    if (this.moedaOrigem && this.moedaOrigem !== 'selecione' && this.moedaDestino && this.valor) {
+    if (!this.moedaOrigem || this.moedaOrigem === 'selecione') {
+      this.exibirAlertaErro('Selecione uma moeda de origem.');
+    } else if (!this.moedaDestino) {
+      this.exibirAlertaErro('Selecione uma moeda de destino.');
+    } else if (this.valor <= 0) {
+      this.exibirAlertaErro('O valor de conversão deve ser maior que 0.');
+    } else {
       this.principalService.getExchangeRate(this.moedaOrigem, this.moedaDestino, this.valor).subscribe(
         (response: any) => {
           if (response.result === 'success' && response.conversion_rate) {
@@ -42,21 +50,27 @@ export class ConversorMoedasComponent {
               valorOrigem: this.valor,
               moedaDestino: this.moedaDestino,
               valorDestino: this.valorConvertido,
-              taxaCambio: this.taxaDeConversao
+              taxaCambio: this.taxaDeConversao,
             };
+            console.log(conversao.id);
             this.historicoService.adicionarConversao(conversao);
             const conversaoString = JSON.stringify(conversao);
             localStorage.setItem('conversao-1', conversaoString);
-
+          } else {
+            this.exibirAlertaErro('Erro na conversão de moeda: ' + response.error_message);
           }
         },
         (error: any) => {
-          console.error('Erro na conversão de moeda:', error);
+          this.exibirAlertaErro('Erro na conversão de moeda: ' + error.message);
         }
       );
-    } else {
-      console.error('Por favor, preencha todos os campos antes de converter.');
     }
+  }
+
+  exibirAlertaErro(mensagem: string) {
+    this.snackBar.open(mensagem, 'Fechar', {
+      duration: 5000,
+    });
   }
 
   ngOnInit() {
@@ -66,13 +80,13 @@ export class ConversorMoedasComponent {
           this.moedas = response.supported_codes.map((currency: any) => {
             return {
               name: currency[1],
-              symbol: currency[0]
+              symbol: currency[0],
             };
           });
         }
       },
       (error: any) => {
-        console.error('Erro ao obter a lista de moedas:', error);
+        this.exibirAlertaErro('Erro ao obter a lista de moedas: ' + error.message);
       }
     );
   }
@@ -85,5 +99,10 @@ export class ConversorMoedasComponent {
     this.valorConvertido = 0;
     this.taxaDeConversao = 0;
   }
-
 }
+
+
+
+
+
+

@@ -20,6 +20,7 @@ import { HistoricoConversoesService } from './historico-conversoes/historico-con
 import { DatePipe } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -51,6 +52,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     MatSelectModule,
     FormsModule,
+    MatSnackBarModule
 
   ],
   providers: [HistoricoConversoesService,

@@ -24,11 +24,22 @@ export class HistoricoConversoesService {
     return this.historico;
   }
 
-  excluirConversao(conversao: IHistoricoConversoes) {
-    const index = this.historico.indexOf(conversao);
-    if (index !== -1) {
-      this.historico.splice(index, 1);
-      this.atualizarLocalStorage();
+  // excluirConversao(conversao: IHistoricoConversoes) {
+  //   const index = this.historico.indexOf(conversao);
+  //   if (index !== -1) {
+  //     this.historico.splice(index, 1);
+  //     this.atualizarLocalStorage();
+  //   }
+  // }
+
+  excluirConversao(id: string) {
+    const conversao = this.obterConversaoPorId(id);
+    if (conversao) {
+      const index = this.historico.indexOf(conversao);
+      if (index !== -1) {
+        this.historico.splice(index, 1);
+        this.atualizarLocalStorage();
+      }
     }
   }
 
@@ -44,4 +55,5 @@ export class HistoricoConversoesService {
   obterConversaoPorId(id: string): IHistoricoConversoes | undefined {
     return this.historico.find((conversao) => conversao.id === id);
   }
+
 }
