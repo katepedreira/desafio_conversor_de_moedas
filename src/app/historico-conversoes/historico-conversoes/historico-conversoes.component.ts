@@ -43,7 +43,6 @@ export class HistoricoConversoesComponent implements OnInit {
   excluirConversao(id: string) {
     this.historicoService.excluirConversao(id);
     this.historico = new MatTableDataSource<IHistoricoConversoes>(this.historicoService.obterHistoricoCompleto());
-    this.historico.sort = this.sort;
   }
 
   applyFilter(event: Event) {
